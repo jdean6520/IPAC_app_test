@@ -1,0 +1,42 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>IMI Mobile Framework</title>
+    <script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="js/jquery.touchSwipe.min.js"></script>
+    <script type="text/javascript" src="js/jquery.dcjqaccordion.2.7.min.js"></script>
+    <script type="text/javascript" src="js/app_main.js"></script>
+    <script type="text/javascript" src="slide_information.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/imi_app.css" />
+    <link href="css/dcaccordion.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+    <div id="wrapper">
+    	<div id="content_window">
+        	<iframe id="content_frame">
+            </iframe>
+        </div>
+    	<div id="menu_bar">
+        	<ul>
+            	<li id="course_map_button">COURSE MAP</li>
+                <li id="transcript_button">TRANSCRIPT</li>
+                <li id="resources_button">RESOURCES</li>
+                <!-- <li id="user_info_button">USER INFO</li> -->
+                <li id="help_button">HELP</li>
+            </ul>
+            <div id="course_map_block" class="foldout_menu">Course Map.</div>
+            <div id="transcript_block" class="foldout_menu">Transcript.</div>
+            <div id="resources_block" class="foldout_menu">Resources.</div>
+            <!-- <div id="user_info_block" class="foldout_menu">User Info</div> -->
+            <div id="help_block" class="foldout_menu">Help.</div>
+        </div>
+        <div id="controls_bar">
+        	<h3 id="lesson_title"></h3>
+            <h3 id="slide_count"></h3>
+        </div>
+    </div>
+</body>
+</html>
