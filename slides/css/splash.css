@@ -60,10 +60,15 @@ body {
 
 #slide_container {
 	width: 100%;
-	background-color: #963;
+	height: 100%;
+	background-color: rgba(0,0,0,0);
 	text-align: center;
 	overflow: hidden;
 	height: 100%;
+	background-image: url("../images/splash_screen.png");
+	background-size: 100%;
+	background-position: center;
+	background-repeat: no-repeat;
 }
 
 p {
