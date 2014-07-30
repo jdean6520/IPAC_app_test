@@ -66,38 +66,41 @@ var Composition = Edge.Composition, Symbol = Edge.Symbol; // aliases for commonl
       });
       //Edge binding end
       
-      Symbol.bindElementAction(compId, symbolName, "${_play_pause}", "click", function(sym, e) {
       
+
+      Symbol.bindElementAction(compId, symbolName, "${_play_pause}", "touchend", function(sym, e) {
+         
          if (sym.isPlaying()) {
          	sym.stop()
          	console.log("Movie is paused");
          	sym.$("audio")[0].pause();
          	console.log("Audio is paused as well");
-      
-      
+         
+         
          sym.getSymbol("play_pause").play("pause");
-      
-      
-      
-      
-      
-      
-      
-      
+         
+         
+         
+         
+         
+         
+         
+         
          } else {
          	sym.play()
          	console.log("Movie is playing");
          	sym.$("audio")[0].play();
          	console.log("Audio is playing as well");
-      
+         
          	sym.getSymbol("play_pause").play("play");
-      
-      
-      
+         
+         
+         
          }
-      
-      
-      
+         
+         
+         
+
       });
       //Edge binding end
 
