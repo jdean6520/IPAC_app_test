@@ -1,7 +1,7 @@
 // JavaScript Document
 var currentPage = 0;
 
-var pages = ["splash.html", "page1.html", "page2.html", "page3.html", "page4.html"];
+var pages = ["splash.html", "page1.html", "page2.html", "page3.html", "page4.html", "M2_L4.html"];
 
 $(function() {
 	var contentFrame = document.getElementById("content_frame");
@@ -27,10 +27,33 @@ $(function() {
 		dataType: "xml",
 		success: function (xml) { xmlParser(xml) }
 	});
+	
+	document.getElementById('content_frame').onload = function() {	
+		var swiper = $('#content_frame').contents().find("body");
+		swiper.swipe( {
+			//Generic swipe handler for all directions
+			swipe:function(event, direction, distance, duration, fingerCount, fingerData) {
+				pageSwipe(direction);
+			},
+			//Default is 75px, set to 0 for demo so any distance triggers swipe
+		   threshold:75
+		});
+	}
 });
 
 function doToggle(el) {
 	$(".foldout_menu").not(el).slideUp();
+	
+	if (el.is($('#help_block'))) {
+		if ($('#help_block').css('display') != 'block') {
+			$('#menu_bar').css('height', '100%');
+		} else {
+			var element = $('#menu_bar'),
+			curHeight = element.height(),
+			autoHeight = element.css('height', 'auto').height();
+			element.height(curHeight).animate({height: autoHeight}, 1000);
+		}
+	}
 	
 	el.slideToggle();
 }
@@ -78,6 +101,27 @@ function changePage(pageLink) {
 			break;
 		}
 	}
+	
+	document.getElementById('content_frame').onload = function() {
+		frameLoaded();
+	}
+}
+
+function frameLoaded(direction) {	
+	var swiper = $('#content_frame').contents().find("body");
+		swiper.swipe( {
+			//Generic swipe handler for all directions
+			swipe:function(event, direction, distance, duration, fingerCount, fingerData) {
+				pageSwipe(direction);
+			},
+			//Default is 75px, set to 0 for demo so any distance triggers swipe
+		   threshold:75
+		});
+		
+	if (direction) {
+		returnPage(direction);
+	}
+	
 	updateMenuItems();
 }
 
@@ -99,7 +143,12 @@ function updateMenuItems() {
 	$("#resources_block").html(resourcesMarkup);
 	
 	$("#lesson_title").html(slides[currentPage].title);
-	$("#slide_count").html((currentPage + 1) + " of " + slides.length);
+	
+	if (currentPage != 0) {
+		$("#slide_count").html((currentPage) + " of " + (slides.length - 1));
+	} else {
+		$("#slide_count").html("");
+	}
 }
 
 function pageSwipe(direction) {
@@ -109,7 +158,9 @@ function pageSwipe(direction) {
 			var contentFrame = document.getElementById("content_frame");
 			contentFrame.src = "slides/" + pages[currentPage];
 			updateMenuItems();
-			returnPage("left");});
+			document.getElementById('content_frame').onload = function() {
+				frameLoaded("left");
+			};});
 	}
 	if ((direction == "left") && (currentPage + 1 < pages.length)) {
 		$("#content_window").animate({left: -window.innerWidth}, 500, function() {
@@ -117,7 +168,10 @@ function pageSwipe(direction) {
 			var contentFrame = document.getElementById("content_frame");
 			contentFrame.src = "slides/" + pages[currentPage];
 			updateMenuItems();
-			returnPage("right");});
+			document.getElementById('content_frame').onload = function() {
+				
+				frameLoaded("right");
+			};});
 	}
 }
 
