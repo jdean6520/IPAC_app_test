@@ -224,7 +224,7 @@ function changePage(pageLink) {
 	var contentFrame = document.getElementById("content_frame");
 	contentFrame.src = "slides/" + pageLink;
 	
-	$("#course_map_block").slideToggle();
+	doToggle($("#course_map_block"));
 	
 	for (var i = 0; i < pages.length; i++) {
 		if (pages[i] == pageLink) {

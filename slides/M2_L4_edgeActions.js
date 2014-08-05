@@ -205,14 +205,7 @@ var Composition = Edge.Composition, Symbol = Edge.Symbol; // aliases for commonl
 
       
 
-      Symbol.bindTriggerAction(compId, symbolName, "Default Timeline", 1004, function(sym, e) {
-         // insert code here
-         // Play the timeline at a label or specific time. For example:
-         // sym.play(500); or sym.play("myLabel");
-         //sym.play("Interaction_1");
-
-      });
-      //Edge binding end
+      
 
       Symbol.bindTriggerAction(compId, symbolName, "Default Timeline", 108000, function(sym, e) {
          //Pause timeline, get current time as variable
@@ -367,6 +360,13 @@ var Composition = Edge.Composition, Symbol = Edge.Symbol; // aliases for commonl
          // Pause an audio track 
          sym.$("audio")[0].pause();
          
+
+      });
+      //Edge binding end
+
+      Symbol.bindElementAction(compId, symbolName, "${_hitarea}", "touchend", function(sym, e) {
+         // insert code for mouse click here
+         sym.play();
 
       });
       //Edge binding end
