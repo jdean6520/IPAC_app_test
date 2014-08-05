@@ -75,9 +75,9 @@
               <icon src="res/ios/icon-50.png" gap:platform="ios" width="50" height="50" />
               <icon src="res/ios/icon-50@2x.png" gap:platform="ios" width="100" height="100" />
     <!-- Splash iPhone and iPod touch -->		 
-
+			<!-- iPad -->
+			<gap:splash src="res/ios/Default-Landscape.png" gap:platform="ios" width="1024" height="768" />
 			<!-- Retina iPad -->
-			  <gap:splash src="res/ios/Default-Portrait@2x.png" gap:platform="ios" width="1536" height="2048" />
 			  <gap:splash src="res/ios/Default-Landscape@2x.png" gap:platform="ios" width="2048" height="1536" />          
      
 </widget>
