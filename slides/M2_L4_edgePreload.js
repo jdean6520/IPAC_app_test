@@ -59,16 +59,16 @@ if (AdobeEdge.bootstrapLoading) { signaledLoading = true; AdobeEdge.loadResource
 
 loadResources(aLoader, doDelayLoad);
 
-var plSTF="none",ctrPlS="horizontal",minPlW="0",maxPlW=undefined,plWidth="1008px",plHeight="572px";
+var plSTF="both",ctrPlS="horizontal",minPlW="0",maxPlW=undefined,plWidth="1008px",plHeight="572px";
 
 preContent={
     dom: [
     {
-        id: 'circle_preloader',
+        id: 'preloader12',
         type: 'image',
         tag: 'img',
-        rect: ['444', '226','120px','120px','auto', 'auto'],
-        fill: ["rgba(0,0,0,0)",'images/circle_preloader.gif','0px','0px']
+        rect: ['462', '244','85px','85px','auto', 'auto'],
+        fill: ["rgba(0,0,0,0)",'images/preloader12.gif','0px','0px']
     }]};//simpleContent
 
 dlContent={dom: [ ]};//simpleContent
