@@ -177,21 +177,21 @@ var symbols = {
                 display: 'none',
                 type: 'image',
                 rect: ['0', '0','1008px','572px','auto', 'auto'],
-                fill: ["rgba(0,0,0,0)",im+"_004_022M3Pleft_entered.png",'0px','0px']
+                fill: ["rgba(0,0,0,0)",im+"004_022M3Pleft_entered.png",'0px','0px']
             },
             {
                 id: '_004_024CUSTOMwindow',
                 display: 'none',
                 type: 'image',
                 rect: ['0', '0','1008px','572px','auto', 'auto'],
-                fill: ["rgba(0,0,0,0)",im+"_004_024CUSTOMwindow.png",'0px','0px']
+                fill: ["rgba(0,0,0,0)",im+"004_024CUSTOMwindow.png",'0px','0px']
             },
             {
                 id: '_004_025ITEM1checked',
                 display: 'none',
                 type: 'image',
                 rect: ['0', '0','1008px','572px','auto', 'auto'],
-                fill: ["rgba(0,0,0,0)",im+"_004_025ITEM1checked.png",'0px','0px']
+                fill: ["rgba(0,0,0,0)",im+"004_025ITEM1checked.png",'0px','0px']
             },
             {
                 id: '_004_026ITEM1name',

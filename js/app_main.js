@@ -179,6 +179,10 @@ function doToggle(el) {
 			autoHeight = element.css('height', 'auto').height();
 			element.height(curHeight).animate({height: autoHeight}, 1000);
 		}
+		helpPage = 0;
+		$("#help_page1").css("left", "0");
+		$("#help_page2").css("left", "100%");
+		$("#help_page3").css("left", "100%");
 	}
 	
 	el.slideToggle();
@@ -292,8 +296,7 @@ function helpSwipe(direction) {
 			$("#help_page2").animate({left: 0}, 500, function() {});		
 			$("#help_page3").animate({left: window.innerWidth}, 500, function() {});
 			helpPage--;
-		}
-		
+		}		
 	}
 	if (direction == "left") {
 		if (helpPage == 0) {
@@ -304,8 +307,9 @@ function helpSwipe(direction) {
 			$("#help_page2").animate({left: -window.innerWidth}, 500, function() {});		
 			$("#help_page3").animate({left: 0}, 500, function() {});
 			helpPage++;
+		} else if (helpPage == 2) {
+			doToggle($("#help_block"));
 		}
-		
 	}
 }
 
