@@ -85,6 +85,7 @@ body {
 	position: absolute;
 	top: 0;
 	left: 0;
+	background-color: rgba(0,0,0,.8);
 }
 
 #menu_bar ul {
@@ -105,64 +106,92 @@ body {
 	font-weight: bold;
 }
 
+
+.triangle {
+	margin-left: 1em;
+}
+
+.expanded {
+	transform:rotate(180deg);
+	-ms-transform:rotate(180deg);
+	-webkit-transform:rotate(180deg);
+	
+	-webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+
+}
+
+.collapsed {	
+	-webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+
+}
+
 #menu_bar li:nth-child(1) {
-	background-color: #BE1E2D;
+	border-bottom: solid 3px #00a79d;
 }
 
 #menu_bar li:nth-child(2) {
-	background-color: #EF4036;
+	border-bottom: solid 3px #8cc63e;
 }
 
 #menu_bar li:nth-child(3) {
-	background-color: #F05A28;
+	border-bottom: solid 3px #f7931d;
 }
 
 #menu_bar li:last-child {
-	background-color: #F7931D;
+	border-bottom: solid 3px #d91b5b;
 }
 
 #course_map_block {
 	width: 50%;
-	background-color: #BE1E2D;
+	background-color: rgba(0,0,0,.8);
+	border-bottom: solid 3px #00a79d;
 	overflow-y: auto;
 	color: white;
 	padding: 2em;
 	position: absolute;
-	top: 3em;
+	top: 3.2em;
 	max-height: 25em;
 }
 
 #transcript_block {
 	width: 50%;
-	background-color: #EF4036;
+	background-color: rgba(0,0,0,.8);
+	border-bottom: solid 3px #8cc63e;
 	overflow-y: auto;
 	color: white;
 	margin-left: 25%;
 	padding: 2em;
 	position: absolute;
-	top: 3em;
+	max-height: 25em;
+	top: 3.2em;
 }
 
 #resources_block {
-	background-color: #F05A28;
+	background-color: rgba(0,0,0,.8);
+	border-bottom: solid 3px #f7931d;
 	width: 50%;
 	overflow-y: auto;
 	color: white;
 	margin-left: 30%;
 	padding: 2em;
 	position: absolute;
-	top: 3em;
+	top: 3.2em;
 }
 
 #help_block {
 	width: 100%;
 	height: 100%;
-	background-color: rgba(0,0,0,.7);
-	background-image: url("../images/help_slide.png");
+	/*background-image: url("../images/help_slide.png");*/
 	background-repeat: no-repeat;
 	background-size: 100%;
 	color: white;
-	top: 3em;
+	top: 3.2em;
 	position: absolute;
 }
 
@@ -174,6 +203,12 @@ body {
 	color: white;
 	display: block;
 	text-decoration: none;
+	margin-bottom: 1em;
+}
+
+#transcript_block h3 {
+	font-weight: bold;
+	font-size: 1.2em;
 	margin-bottom: 1em;
 }
 
@@ -226,4 +261,32 @@ body {
 	position: absolute;
 	bottom: 1em;
 	right: 1em;
+}
+
+#slider {
+	position: absolute;
+	left: 40%;
+	bottom: 1em;
+	text-align: center;
+}
+
+#sliderBar {
+	width: 25em;	
+}
+
+input[type="range"] {
+	color: rgba(0,0,0,0);
+	-webkit-appearance: none;
+	border: 2px solid white;
+	background-color: transparent;
+	border-radius: 1em;	
+}
+
+input[type='range']::-webkit-slider-thumb {
+	-webkit-appearance: none;
+	border-radius: 1em;
+	background-color: white;
+	cursor: pointer;
+	height: 1.5em;
+	width: 1.5em;
 }

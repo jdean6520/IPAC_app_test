@@ -21,11 +21,11 @@
         </div>
     	<div id="menu_bar">
         	<ul>
-            	<li id="course_map_button">COURSE MAP</li>
-                <li id="transcript_button">TRANSCRIPT</li>
-                <li id="resources_button">RESOURCES</li>
-                <!-- <li id="user_info_button">USER INFO</li> -->
-                <li id="help_button">HELP</li>
+            	<li id="course_map_button">Course Map<span class="triangle"><img src="images/triangle.png" /></span></li>
+                <li id="transcript_button">Transcript<span class="triangle"><img src="images/triangle.png" /></span></li>
+                <li id="resources_button">Resources<span class="triangle"><img src="images/triangle.png" /></span></li>
+                <!-- <li id="user_info_button">User Info<span class="triangle"><img src="images/triangle.png" /></span></li> -->
+                <li id="help_button">Help<span class="triangle"><img src="images/triangle.png" /></span></li>
             </ul>
             <div id="course_map_block" class="foldout_menu">Course Map.</div>
             <div id="transcript_block" class="foldout_menu">Transcript.</div>
@@ -35,6 +35,9 @@
         </div>
         <div id="controls_bar">
         	<h3 id="lesson_title"></h3>
+            <div id="slider">
+            	<input type="range" id="sliderBar" min="0" max="100" step="1" value="0" />
+            </div>
             <h3 id="slide_count"></h3>
         </div>
     </div>

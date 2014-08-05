@@ -3,11 +3,17 @@
 	list-style: none;
 }
 
+#accordion ul
+{
+	margin-bottom: 1em;
+}
+
 #course_map_block li {
 	text-align: left;
 	clear: both;
 	width: 100%;
-	font-weight: normal;	
+	font-weight: normal;
+	padding-top: 0;	
 }
 
 #course_map_block li a {
@@ -16,19 +22,19 @@
 }
 
 #course_map_block li:nth-child(1) {
-	background-color: transparent;
+	border-bottom: none;
 }
 
 #course_map_block li:nth-child(2) {
-	background-color: transparent;
+	border-bottom: none;
 }
 
 #course_map_block li:nth-child(3) {
-	background-color: transparent;
+	border-bottom: none;
 }
 
 #course_map_block li:last-child {
-	background-color: transparent;
+	border-bottom: none;
 }
 
 #accordion ul.text 
@@ -57,7 +63,7 @@
 
 #accordion .demo-container 
 {
-	padding: 20px; 
+	padding: 1em; 
 	clear: both;
 }
 

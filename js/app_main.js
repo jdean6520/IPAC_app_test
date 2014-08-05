@@ -1,6 +1,8 @@
 // JavaScript Document
 var currentPage = 0;
 
+// TODO: Figure out how to get the slide count to reflect only the slides in the current lesson
+// TODO: This variable gets populated with the course.xml value for page links
 var pages = ["splash.html", "page1.html", "page2.html", "page3.html", "page4.html", "M2_L4.html"];
 
 $(function() {
@@ -15,11 +17,13 @@ $(function() {
 	$("#help_block").hide();
 	// $("#user_info_block").hide();
 	
-	$("#course_map_button").click(function (){doToggle($("#course_map_block"));});
-	$("#transcript_button").click(function (){doToggle($("#transcript_block"));});
-	$("#resources_button").click(function (){doToggle($("#resources_block"));});
-	$("#help_button").click(function (){doToggle($("#help_block"));});
-	// $("#user_info_button").click(function (){doToggle($("#user_info_block"));});
+	$('#sliderBar').hide();
+	
+	$("#course_map_button").click(function (){flipTriangle($("#course_map_button .triangle img")); doToggle($("#course_map_block")); doPause();});
+	$("#transcript_button").click(function (){flipTriangle($("#transcript_button .triangle img")); doToggle($("#transcript_block"));});
+	$("#resources_button").click(function (){flipTriangle($("#resources_button .triangle img")); doToggle($("#resources_block"));});
+	$("#help_button").click(function (){flipTriangle($("#help_button .triangle img")); doToggle($("#help_block"));});
+	// $("#user_info_button").click(function (){flipTriangle($("#user_info_button .triangle img")); doToggle($("#user_info_block"));});
 	
 	$.ajax({
 		type: "GET",
@@ -28,7 +32,12 @@ $(function() {
 		success: function (xml) { xmlParser(xml) }
 	});
 	
-	document.getElementById('content_frame').onload = function() {	
+	var timer = setInterval(updateSliderPosition, 1000);
+	
+	document.getElementById('content_frame').onload = function() {
+		if (document.getElementById('content_frame').contentWindow.AdobeEdge != undefined) {
+			$('#sliderBar').show();
+		}
 		var swiper = $('#content_frame').contents().find("body");
 		swiper.swipe( {
 			//Generic swipe handler for all directions
@@ -39,14 +48,70 @@ $(function() {
 		   threshold:75
 		});
 	}
+	
+	document.getElementById("sliderBar").addEventListener("input", function(){
+       doSliderUpdate(this.value);
+    });
+
+	
+	// If the app hasn't been opened before, show help slide
+	if (localStorage.getItem("appOpened") != "true") {
+		flipTriangle($("#help_button .triangle"));
+		doToggle($('#help_block'));
+	}
+	
+	// Store that the app has been opened
+	localStorage.setItem("appOpened", "true");
 });
+
+function doSliderUpdate(slideAmount) {
+	if (document.getElementById('content_frame').contentWindow.AdobeEdge != undefined) {
+		var stage = document.getElementById('content_frame').contentWindow.AdobeEdge.getComposition("slide_container");
+		
+		// Set stage and audio to play from time mark
+		var timePosition = stage.getStage().getDuration() * (slideAmount / 100);
+		stage.getStage().$("audio")[0].pause();
+		stage.getStage().$("audio")[0].currentTime = timePosition / 1000;
+		stage.getStage().$("audio")[0].play();
+		stage.getStage().play(timePosition, true);
+	}
+}
+
+function updateSliderPosition() {
+	if (document.getElementById('content_frame').contentWindow.AdobeEdge != undefined) {
+		var stage = document.getElementById('content_frame').contentWindow.AdobeEdge.getComposition("slide_container");
+		
+		var currentPosition = stage.getStage().getPosition();
+		
+		var sliderPosition = (currentPosition / stage.getStage().getDuration()) * 100;
+		document.querySelector('input[id=sliderBar]').value = Math.round(sliderPosition);
+	}
+}
+
+function doPause() {
+	if (document.getElementById('content_frame').contentWindow.AdobeEdge != undefined) {
+		var stage = document.getElementById('content_frame').contentWindow.AdobeEdge.getComposition("slide_container");
+		stage.getStage().stopAll();
+		stage.getStage().$("audio")[0].pause();
+	}
+}
+
+function flipTriangle(el) {
+	if(el.hasClass("expanded")) {
+		el.removeClass("expanded");
+		el.addClass("collapsed");
+	} else {
+		el.removeClass("collapsed");
+		el.addClass("expanded");	
+	}
+}
 
 function doToggle(el) {
 	$(".foldout_menu").not(el).slideUp();
 	
 	if (el.is($('#help_block'))) {
 		if ($('#help_block').css('display') != 'block') {
-			$('#menu_bar').css('height', '100%');
+			$('#menu_bar').animate({height: "100%"}, 1000);
 		} else {
 			var element = $('#menu_bar'),
 			curHeight = element.height(),
@@ -107,7 +172,10 @@ function changePage(pageLink) {
 	}
 }
 
-function frameLoaded(direction) {	
+function frameLoaded(direction) {
+	if (document.getElementById('content_frame').contentWindow.AdobeEdge != undefined) {
+			$('#sliderBar').show();
+	}
 	var swiper = $('#content_frame').contents().find("body");
 		swiper.swipe( {
 			//Generic swipe handler for all directions
@@ -147,6 +215,7 @@ function updateMenuItems() {
 	if (currentPage != 0) {
 		$("#slide_count").html((currentPage) + " of " + (slides.length - 1));
 	} else {
+		$("#sliderBar").hide();
 		$("#slide_count").html("");
 	}
 }
