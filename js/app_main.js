@@ -1,5 +1,6 @@
 // JavaScript Document
 var currentPage = 0;
+var helpPage = 0;
 
 // TODO: Figure out how to get the slide count to reflect only the slides in the current lesson
 // TODO: This variable gets populated with the course.xml value for page links
@@ -19,11 +20,11 @@ $(function() {
 	
 	$('#sliderBar').hide();
 	
-	$("#course_map_button").click(function (){flipTriangle($("#course_map_button .triangle img")); doToggle($("#course_map_block")); doPause();});
-	$("#transcript_button").click(function (){flipTriangle($("#transcript_button .triangle img")); doToggle($("#transcript_block"));});
-	$("#resources_button").click(function (){flipTriangle($("#resources_button .triangle img")); doToggle($("#resources_block"));});
-	$("#help_button").click(function (){flipTriangle($("#help_button .triangle img")); doToggle($("#help_block"));});
-	// $("#user_info_button").click(function (){flipTriangle($("#user_info_button .triangle img")); doToggle($("#user_info_block"));});
+	$("#course_map_button").click(function (){doToggle($("#course_map_block")); doPause();});
+	$("#transcript_button").click(function (){doToggle($("#transcript_block"));});
+	$("#resources_button").click(function (){doToggle($("#resources_block"));});
+	$("#help_button").click(function (){doToggle($("#help_block"));});
+	// $("#user_info_button").click(function (){doToggle($("#user_info_block"));});
 	
 	$.ajax({
 		type: "GET",
@@ -32,6 +33,7 @@ $(function() {
 		success: function (xml) { xmlParser(xml) }
 	});
 	
+	// Checks for Edge stage progress and updates the position of the slider
 	var timer = setInterval(updateSliderPosition, 1000);
 	
 	document.getElementById('content_frame').onload = function() {
@@ -44,10 +46,18 @@ $(function() {
 			swipe:function(event, direction, distance, duration, fingerCount, fingerData) {
 				pageSwipe(direction);
 			},
-			//Default is 75px, set to 0 for demo so any distance triggers swipe
 		   threshold:75
 		});
 	}
+	
+	var help_swiper = $('#help_block');
+	help_swiper.swipe( {
+		//Generic swipe handler for all directions
+		swipe:function(event, direction, distance, duration, fingerCount, fingerData) {
+			helpSwipe(direction);
+		},
+	   threshold:75
+	});
 	
 	document.getElementById("sliderBar").addEventListener("input", function(){
        doSliderUpdate(this.value);
@@ -56,7 +66,7 @@ $(function() {
 	
 	// If the app hasn't been opened before, show help slide
 	if (localStorage.getItem("appOpened") != "true") {
-		flipTriangle($("#help_button .triangle"));
+		$("#help_button .triangle img").toggleClass("expanded");
 		doToggle($('#help_block'));
 	}
 	
@@ -96,20 +106,71 @@ function doPause() {
 	}
 }
 
-function flipTriangle(el) {
-	if(el.hasClass("expanded")) {
-		el.removeClass("expanded");
-		el.addClass("collapsed");
-	} else {
-		el.removeClass("collapsed");
-		el.addClass("expanded");	
-	}
-}
-
 function doToggle(el) {
+	// TODO: There has to be a better way to do this...
 	$(".foldout_menu").not(el).slideUp();
 	
-	if (el.is($('#help_block'))) {
+	if (el.is($('#course_map_block'))) {
+		$("#course_map_button").toggleClass("bottom-out");
+		$("#transcript_button").toggleClass("bottom-out", false);
+		$("#resources_button").toggleClass("bottom-out", false);
+		$("#help_button").toggleClass("bottom-out", false);
+		//$("#user_info_button").toggleClass("bottom-out", false);
+		
+		$("#course_map_button .triangle img").toggleClass("expanded");
+		$("#transcript_button .triangle img").toggleClass("expanded", false);
+		$("#resources_button .triangle img").toggleClass("expanded", false);
+		$("#help_button .triangle img").toggleClass("expanded", false);
+		//$("#user_info_button .triangle img").toggleClass("expanded", false);
+	} else if (el.is($('#transcript_block'))) {
+		$("#course_map_button").toggleClass("bottom-out", false);
+		$("#transcript_button").toggleClass("bottom-out");
+		$("#resources_button").toggleClass("bottom-out", false);
+		$("#help_button").toggleClass("bottom-out", false);
+		//$("#user_info_button").toggleClass("bottom-out", false);
+		
+		$("#course_map_button .triangle img").toggleClass("expanded", false);
+		$("#transcript_button .triangle img").toggleClass("expanded");
+		$("#resources_button .triangle img").toggleClass("expanded", false);
+		$("#help_button .triangle img").toggleClass("expanded", false);
+		//$("#user_info_button .triangle img").toggleClass("expanded", false);
+	} else if (el.is($('#resources_block'))) {
+		$("#course_map_button").toggleClass("bottom-out", false);
+		$("#transcript_button").toggleClass("bottom-out", false);
+		$("#resources_button").toggleClass("bottom-out");
+		$("#help_button").toggleClass("bottom-out", false);
+		//$("#user_info_button").toggleClass("bottom-out", false);
+		
+		$("#course_map_button .triangle img").toggleClass("expanded", false);
+		$("#transcript_button .triangle img").toggleClass("expanded", false);
+		$("#resources_button .triangle img").toggleClass("expanded");
+		$("#help_button .triangle img").toggleClass("expanded", false);
+		//$("#user_info_button .triangle img").toggleClass("expanded", false);
+	} /*else if (el.is($('#user_info_block'))) {
+		$("#course_map_button").toggleClass("bottom-out", false);
+		$("#transcript_button").toggleClass("bottom-out", false);
+		$("#resources_button").toggleClass("bottom-out", false);
+		$("#help_button").toggleClass("bottom-out", false);
+		//$("#user_info_button").toggleClass("bottom-out");
+		
+		$("#course_map_button .triangle img").toggleClass("expanded", false);
+		$("#transcript_button .triangle img").toggleClass("expanded", false);
+		$("#resources_button .triangle img").toggleClass("expanded", false);
+		$("#help_button .triangle img").toggleClass("expanded");
+		$("#user_info_button .triangle img").toggleClass("expanded", false);
+	}*/ else if (el.is($('#help_block'))) {
+		$("#course_map_button").toggleClass("bottom-out", false);
+		$("#transcript_button").toggleClass("bottom-out", false);
+		$("#resources_button").toggleClass("bottom-out", false);
+		$("#help_button").toggleClass("bottom-out");
+		//$("#user_info_button").toggleClass("bottom-out", false);
+		
+		$("#course_map_button .triangle img").toggleClass("expanded", false);
+		$("#transcript_button .triangle img").toggleClass("expanded", false);
+		$("#resources_button .triangle img").toggleClass("expanded", false);
+		$("#help_button .triangle img").toggleClass("expanded");
+		//$("#user_info_button .triangle img").toggleClass("expanded", false);
+		
 		if ($('#help_block').css('display') != 'block') {
 			$('#menu_bar').animate({height: "100%"}, 1000);
 		} else {
@@ -123,6 +184,7 @@ function doToggle(el) {
 	el.slideToggle();
 }
 
+// Break xml down into course map
 function xmlParser(xml)
 {
 	var nodes = xml.documentElement.childNodes;
@@ -217,6 +279,33 @@ function updateMenuItems() {
 	} else {
 		$("#sliderBar").hide();
 		$("#slide_count").html("");
+	}
+}
+
+function helpSwipe(direction) {
+	if (direction == "right") {
+		if (helpPage == 1) {
+			$("#help_page1").animate({left: 0}, 500, function() {});		
+			$("#help_page2").animate({left: window.innerWidth}, 500, function() {});
+			helpPage--;
+		} else if (helpPage == 2) {
+			$("#help_page2").animate({left: 0}, 500, function() {});		
+			$("#help_page3").animate({left: window.innerWidth}, 500, function() {});
+			helpPage--;
+		}
+		
+	}
+	if (direction == "left") {
+		if (helpPage == 0) {
+			$("#help_page1").animate({left: -window.innerWidth}, 500, function() {});		
+			$("#help_page2").animate({left: 0}, 500, function() {});
+			helpPage++;
+		} else if (helpPage == 1) {
+			$("#help_page2").animate({left: -window.innerWidth}, 500, function() {});		
+			$("#help_page3").animate({left: 0}, 500, function() {});
+			helpPage++;
+		}
+		
 	}
 }
 

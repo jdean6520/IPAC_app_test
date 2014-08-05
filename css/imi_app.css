@@ -193,6 +193,7 @@ body {
 	color: white;
 	top: 3.2em;
 	position: absolute;
+	overflow:hidde4n;
 }
 
 #user_info_block {
@@ -210,6 +211,133 @@ body {
 	font-weight: bold;
 	font-size: 1.2em;
 	margin-bottom: 1em;
+}
+
+.bottom-out {
+	border-bottom: none !important;	
+}
+
+/* ********************   HELP LESSON   ************** */
+
+#help_page1, #help_page2, #help_page3 {
+	width: 100%;
+	height: 100%;
+	font-size: 1.1em;
+	position: absolute;
+	top: 3.2em;
+	text-align: center;
+}
+
+#help_block p {
+	margin-top: 1em;
+}
+
+#help_page1 img {
+	width: 5em;
+}
+
+#help_page3 img {
+	transform:rotate(180deg);
+	-ms-transform:rotate(180deg);
+	-webkit-transform:rotate(180deg);
+}
+
+#help_page1 {
+	left: 0;
+}
+
+#help_page2 {
+	left: 100%;
+}
+
+#help_page3 {
+	left: 100%;
+}
+
+/* Help page 1 */
+/* Swipe right */
+#help_instruction1 {
+	position: absolute;
+	top: 10%;
+	left: 2em;
+}
+
+/* Swipe left */
+#help_instruction2 {
+	position: absolute;
+	top: 10%;
+	right: 2em;
+}
+
+/* Tap */
+#help_instruction3 {
+	position: absolute;
+	top: 40%;
+	left: 35%;
+}
+
+/* Help page 2 */
+/* Course Map */
+#help_instruction4 {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 20em;
+}
+
+/* Transcript */
+#help_instruction5 {
+	position: absolute;
+	top: 8%;
+	left: 20%;
+	width: 20em;
+}
+
+/* Resources */
+#help_instruction6 {
+	position: absolute;
+	top: 0;
+	left: 50%;
+	width: 20em;
+}
+
+/* User Info */
+#help_instruction7 {
+	position: absolute;
+	top: 20%;
+	left: 50%;
+	width: 20em;
+}
+
+/* Help */
+#help_instruction8 {
+	position: absolute;
+	top: 8%;
+	left: 70%;
+	width: 20em;
+}
+
+/* Help page 3 */
+/* Slide title */
+#help_instruction9 {
+	position: absolute;
+	bottom: 25%;
+	left: 2em;
+}
+
+/* Slider controls */
+#help_instruction10 {
+	position: absolute;
+	bottom: 20%;
+	left: 30%;
+	width: 20em;
+}
+
+/* Slide count */
+#help_instruction11 {
+	position: absolute;
+	bottom: 25%;
+	right: 2em;
 }
 
 /* ********************   CONTENT FRAME   ************** */

@@ -21,17 +21,35 @@
         </div>
     	<div id="menu_bar">
         	<ul>
-            	<li id="course_map_button">Course Map<span class="triangle"><img src="images/triangle.png" /></span></li>
-                <li id="transcript_button">Transcript<span class="triangle"><img src="images/triangle.png" /></span></li>
-                <li id="resources_button">Resources<span class="triangle"><img src="images/triangle.png" /></span></li>
-                <!-- <li id="user_info_button">User Info<span class="triangle"><img src="images/triangle.png" /></span></li> -->
-                <li id="help_button">Help<span class="triangle"><img src="images/triangle.png" /></span></li>
+            	<li id="course_map_button">Course Map<span class="triangle"><img src="images/triangle.png" class="collapsed"/></span></li>
+                <li id="transcript_button">Transcript<span class="triangle"><img src="images/triangle.png" class="collapsed"/></span></li>
+                <li id="resources_button">Resources<span class="triangle"><img src="images/triangle.png" class="collapsed"/></span></li>
+                <!-- <li id="user_info_button">User Info<span class="triangle"><img src="images/triangle.png" class="collapsed"/></span></li> -->
+                <li id="help_button">Help<span class="triangle"><img src="images/triangle.png" class="collapsed"/></span></li>
             </ul>
             <div id="course_map_block" class="foldout_menu">Course Map.</div>
             <div id="transcript_block" class="foldout_menu">Transcript.</div>
             <div id="resources_block" class="foldout_menu">Resources.</div>
             <!-- <div id="user_info_block" class="foldout_menu">User Info</div> -->
-            <div id="help_block" class="foldout_menu"></div>
+            <div id="help_block" class="foldout_menu">
+            	<div id="help_page1">
+                	<div id="help_instruction1"><img src="images/slide_left.png" /><p>Swipe right to go to the next instruction slide.</p></div>
+                	<div id="help_instruction2"><img src="images/slide_right.png" /><p>Swipe left to go to the previous instruction slide.</p></div>
+                    <div id="help_instruction3"><img src="images/tap.png" /><p>Tap anywhere on the slide to play and pause.</p></div>
+                </div>
+                <div id="help_page2">
+                	<div id="help_instruction4"><img src="images/arrow.png" /><p>The Course Map allows you to navigate to any slide.</p></div>
+                	<div id="help_instruction5"><img src="images/arrow.png" /><p>The Transcript is a text version of the current slide narration.</p></div>
+                    <div id="help_instruction6"><img src="images/arrow.png" /><p>Resources are links to more information about the subject.</p></div>
+                    <!--<div id="help_instruction7"><img src="images/arrow.png" /><p>User Info tracks your progress through the course.</p></div>-->
+                    <div id="help_instruction8"><img src="images/arrow.png" /><p>Help brings you back here.</p></div>
+                </div>
+                <div id="help_page3">
+                	<div id="help_instruction9"><p>The current slide title.</p></div>
+                	<div id="help_instruction10"><p>Use the slider to rewind and fast forward the current slide.</p><img src="images/arrow.png" /></div>
+                    <div id="help_instruction11"><p>The current slide number within the current lesson.</p></div>
+                </div>
+            </div>
         </div>
         <div id="controls_bar">
         	<h3 id="lesson_title"></h3>
