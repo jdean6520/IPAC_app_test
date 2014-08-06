@@ -4,7 +4,7 @@ var helpPage = 0;
 
 // TODO: Figure out how to get the slide count to reflect only the slides in the current lesson
 // TODO: This variable gets populated with the course.xml value for page links
-var pages = ["splash.html", "page1.html", "page2.html", "page3.html", "page4.html", "M2_L4.html"];
+var pages = ["splash.html"];
 
 $(function() {
 	var contentFrame = document.getElementById("content_frame");
@@ -201,6 +201,7 @@ function xmlParser(xml)
 			for (var j = 0; j < subNodes.length; j++) {
 				if(subNodes[j].nodeName == "slide") {
 					listMarkup += '<li class="sub"><a href="#" onclick="changePage(\'' + subNodes[j].getAttribute('link') + '\')">' + subNodes[j].getAttribute('name') + "</a></li>";
+					pages.push(subNodes[j].getAttribute('link'));
 				}
 			}
 			listMarkup += "</ul>";
@@ -314,7 +315,7 @@ function helpSwipe(direction) {
 }
 
 function pageSwipe(direction) {
-	if ((direction == "right") && (currentPage - 1 >= 0)) {
+	if ((direction == "right") && (currentPage >= 0)) {
 		$("#content_window").animate({left: window.innerWidth}, 500, function() {
 			currentPage--;
 			var contentFrame = document.getElementById("content_frame");
@@ -324,14 +325,13 @@ function pageSwipe(direction) {
 				frameLoaded("left");
 			};});
 	}
-	if ((direction == "left") && (currentPage + 1 < pages.length)) {
+	if ((direction == "left") && (currentPage < pages.length)) {
 		$("#content_window").animate({left: -window.innerWidth}, 500, function() {
 			currentPage++;
 			var contentFrame = document.getElementById("content_frame");
 			contentFrame.src = "slides/" + pages[currentPage];
 			updateMenuItems();
-			document.getElementById('content_frame').onload = function() {
-				
+			document.getElementById('content_frame').onload = function() {				
 				frameLoaded("right");
 			};});
 	}
