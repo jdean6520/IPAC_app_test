@@ -6,6 +6,7 @@
 	"expanded:images/006_021_xClick.png":"nil",
 	"expanded:images/006_018_okDown.png":"nil",
 	"expanded:images/004_032MENU.png":"nil",
+	"Preloader-Default Timeline_playhead_ms":"0",
 	"expanded:images/_004_029OACupdated.png":"nil",
 	"expanded:images/006_010h_tabDrag.png":"nil",
 	"expanded:images/_004_030CLOSEdown.png":"nil",
@@ -54,6 +55,7 @@
 	"expanded:images/004_037SAVEhighlighted.png":"nil",
 	"expanded:images/pause_icon.png":"nil",
 	"expanded:images/004_016LAUNCHERnot_installed_entered.png":"nil",
+	"expanded:images/preloader13.gif":"nil",
 	"expanded:images/_004_033ACFGhighlighted.png":"nil",
 	"expanded:images/004_039OKhighlighted.png":"nil",
 	"expanded:images/007_013_noOver.png":"nil",
@@ -414,8 +416,9 @@
 	"expanded:images/_004_024CUSTOMwindow.png":"nil",
 	"expanded:images/007_007_closeDown.png":"nil",
 	"expanded:images/_004_029CLOSEover.png":"nil",
+	"expanded:images/preloader14.gif":"nil",
 	"expanded:images/006_010j_tabDrag.png":"nil",
-	"nextElementColorIndex":"11",
+	"nextElementColorIndex":"12",
 	"stage-Default Timeline_playhead_ms":"47388",
 	"expanded:images/play_icon2.png":"nil",
 	"expanded:images/004_029CLOSEover.png":"nil",
@@ -424,6 +427,15 @@
 	"expanded:images/play_icon.png":"nil",
 	"expanded:images/004_028OKhighlighted.png":"nil",
 	"expanded:images/007_001_start.png":"nil",
+	"symbol_Preloader":{
+		"dummyStageParentWidth":"1008px",
+		"dummyStageParentHeight":"572px",
+		"defaultStageParentWidth":"1008px",
+		"defaultStageParentHeight":"572px",
+		"element_${_preloader13}":{
+			"timelineColor2":"0xd35d6e",
+			"timelineColor3":"0x7e4b52",
+			"timelineColor":"0xfb657a"}},
 	"expanded:images/preloader12.gif":"nil",
 	"expanded:images/_004_023ITEMhighlighted.png":"nil",
 	"expanded:images/_004_017ROCKETpulldown.png":"nil",
@@ -480,7 +492,8 @@
    }},\
 \"Preloader\": {\
    \"timelines\": {\
-\
+      \"Default Timeline\": {\
+      }\
    }},\
 \"Down-level\": {\
    \"timelines\": {\

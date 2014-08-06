@@ -80,9 +80,7 @@ var Composition = Edge.Composition, Symbol = Edge.Symbol; // aliases for commonl
          
          if (sym.isPlaying()) {
          	sym.stop()
-         	console.log("Movie is paused");
          	sym.$("audio")[0].pause();
-         	console.log("Audio is paused as well");
          
          
          sym.getSymbol("play_pause").play("pause");
@@ -96,9 +94,7 @@ var Composition = Edge.Composition, Symbol = Edge.Symbol; // aliases for commonl
          
          } else {
          	sym.play()
-         	console.log("Movie is playing");
          	sym.$("audio")[0].play();
-         	console.log("Audio is playing as well");
          
          	sym.getSymbol("play_pause").play("play");
          
@@ -112,42 +108,7 @@ var Composition = Edge.Composition, Symbol = Edge.Symbol; // aliases for commonl
       });
       //Edge binding end
 
-      Symbol.bindElementAction(compId, symbolName, "${_play_pause}", "click", function(sym, e) {
-         
-         if (sym.isPlaying()) {
-         	sym.stop()
-         	console.log("Movie is paused");
-         	sym.$("audio")[0].pause();
-         	console.log("Audio is paused as well");
-         
-         
-         sym.getSymbol("play_pause").play("pause");
-         
-         
-         
-         
-         
-         
-         
-         
-         } else {
-         	sym.play()
-         	console.log("Movie is playing");
-         	sym.$("audio")[0].play();
-         	console.log("Audio is playing as well");
-         
-         	sym.getSymbol("play_pause").play("play");
-         
-         
-         
-         }
-         
-         
-         
-         
-
-      });
-      //Edge binding end
+      
 
       
 
@@ -171,12 +132,7 @@ var Composition = Edge.Composition, Symbol = Edge.Symbol; // aliases for commonl
 
       
 
-      Symbol.bindElementAction(compId, symbolName, "${_hitarea}", "click", function(sym, e) {
-         // insert code for mouse click here
-         sym.play();
-
-      });
-      //Edge binding end
+      
 
       
 

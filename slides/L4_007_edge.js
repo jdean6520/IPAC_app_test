@@ -195,7 +195,7 @@ var symbols = {
         "Default Timeline": {
             fromState: "Base State",
             toState: "",
-            duration: 36387,
+            duration: 38524,
             autoPlay: false,
             timeline: [
                 { id: "eid82", tween: [ "style", "${__003_000_BACKGROUND}", "display", 'block', { fromValue: 'none'}], position: 36387, duration: 0, easing: "easeOutQuad" },

@@ -8,8 +8,20 @@
 	"expanded:images/006_010d_tabDrag.png":"nil",
 	"expanded:images/004_015LAUNCHERnot_installed_highlighted.png":"nil",
 	"expanded:images/006_018_okDown.png":"nil",
+	"expanded:images/004_007DEFLECTORpulldown.png":"nil",
 	"expanded:images/004_032MENU.png":"nil",
+	"Preloader-Default Timeline_playhead_ms":"0",
 	"expanded:images/006_016_crsClick.png":"nil",
+	"symbol_Preloader":{
+		"element_${_preloader14}":{
+			"timelineColor2":"0x168c84",
+			"timelineColor3":"0x2a605c",
+			"timelineColor":"0x00a096"},
+		"dummyStageParentWidth":"1008px",
+		"dummyStageParentHeight":"572px",
+		"defaultStageParentWidth":"1008px",
+		"defaultStageParentHeight":"572px"},
+	"expanded:images/preloader13.gif":"nil",
 	"expanded:images/preloader12.gif":"nil",
 	"expanded:images/006_010h_tabDrag.png":"nil",
 	"expanded:images/006_008_tabOver.png":"nil",
@@ -17,7 +29,7 @@
 	"expanded:images/004_031DEPtab.png":"nil",
 	"expanded:images/006_006_fatType.png":"nil",
 	"expanded:images/004_025ITEM1checked.png":"nil",
-	"expanded:images/004_007DEFLECTORpulldown.png":"nil",
+	"expanded:images/preloader14.gif":"nil",
 	"expanded:images/006_002_depRightClick.png":"nil",
 	"expanded:images/006_010j_tabDrag.png":"nil",
 	"expanded:images/splash_screen.png":"nil",
@@ -180,7 +192,7 @@
 	"expanded:images/007_012_exitClick.png":"nil",
 	"expanded:images/004_016LAUNCHERnot_installed_entered.png":"nil",
 	"expanded:images/007_010_fileClick.png":"nil",
-	"nextElementColorIndex":"5",
+	"nextElementColorIndex":"6",
 	"expanded:images/006_010e_tabDrag.png":"nil",
 	"expanded:images/004_014LAUNCHERpulldown.png":"nil",
 	"pref__general__GenerateSmoothTransitions":"true",
@@ -247,7 +259,8 @@
    }},\
 \"Preloader\": {\
    \"timelines\": {\
-\
+      \"Default Timeline\": {\
+      }\
    }},\
 \"Down-level\": {\
    \"timelines\": {\
