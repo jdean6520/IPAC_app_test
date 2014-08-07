@@ -1,9 +1,11 @@
 // JavaScript Document
 var currentPage = 0;
 var helpPage = 0;
+var pagesVisited = [];
+
+//localStorage.setItem("pages_visited", "0");
 
 // TODO: Figure out how to get the slide count to reflect only the slides in the current lesson
-// TODO: This variable gets populated with the course.xml value for page links
 var pages = ["splash.html"];
 
 $(function() {
@@ -20,11 +22,11 @@ $(function() {
 	
 	$('#sliderBar').hide();
 	
-	$("#course_map_button").click(function (){doToggle($("#course_map_block")); doPause();});
-	$("#transcript_button").click(function (){doToggle($("#transcript_block"));});
-	$("#resources_button").click(function (){doToggle($("#resources_block"));});
-	$("#help_button").click(function (){doToggle($("#help_block"));});
-	// $("#user_info_button").click(function (){doToggle($("#user_info_block"));});
+	$("#course_map_button").bind("touchend", function(){doToggle($("#course_map_block")); doPause();});
+	$("#transcript_button").bind("touchend", function (){doToggle($("#transcript_block"));});
+	$("#resources_button").bind("touchend", function (){doToggle($("#resources_block"));});
+	$("#help_button").bind("touchend", function (){doToggle($("#help_block")); doPause();});
+	// $("#user_info_button").bind("touchend", function (){doToggle($("#user_info_block"));});
 	
 	$.ajax({
 		type: "GET",
@@ -36,6 +38,7 @@ $(function() {
 	// Checks for Edge stage progress and updates the position of the slider
 	var timer = setInterval(updateSliderPosition, 1000);
 	
+	// Set up initial swipe behavior
 	document.getElementById('content_frame').onload = function() {
 		if (document.getElementById('content_frame').contentWindow.AdobeEdge != undefined) {
 			$('#sliderBar').show();
@@ -50,6 +53,7 @@ $(function() {
 		});
 	}
 	
+	// Help lesson behavior
 	var help_swiper = $('#help_block');
 	help_swiper.swipe( {
 		//Generic swipe handler for all directions
@@ -68,10 +72,20 @@ $(function() {
 	if (localStorage.getItem("appOpened") != "true") {
 		$("#help_button .triangle img").toggleClass("expanded");
 		doToggle($('#help_block'));
+		
+		localStorage.setItem("pages_visited", "0");
 	}
 	
-	// Store that the app has been opened
+	// Store that the app has been opened and retrieve memory of visited pages
 	localStorage.setItem("appOpened", "true");
+	var pagesRetriever = JSON.parse(localStorage.getItem("pages_visited"));
+	if (pagesRetriever.length != undefined) {
+		for (var i = 0; i < pagesRetriever.length; i++) {
+			pagesVisited.push(pagesRetriever[i]);
+		}
+	} else {
+		pagesVisited.push(0);
+	}
 });
 
 function doSliderUpdate(slideAmount) {
@@ -95,6 +109,8 @@ function updateSliderPosition() {
 		
 		var sliderPosition = (currentPosition / stage.getStage().getDuration()) * 100;
 		document.querySelector('input[id=sliderBar]').value = Math.round(sliderPosition);
+	} else {
+		$('#sliderBar').hide();
 	}
 }
 
@@ -200,7 +216,9 @@ function xmlParser(xml)
 			var subNodes = nodes[i].childNodes;
 			for (var j = 0; j < subNodes.length; j++) {
 				if(subNodes[j].nodeName == "slide") {
-					listMarkup += '<li class="sub"><a href="#" onclick="changePage(\'' + subNodes[j].getAttribute('link') + '\')">' + subNodes[j].getAttribute('name') + "</a></li>";
+					var linkclass = "sub";
+					if (pagesVisited.indexOf(pages.length) != -1) {linkclass += " page-visited";}
+					listMarkup += '<li id="' + pages.length + '" class="' + linkclass + '"><a href="#" onclick="changePage(\'' + subNodes[j].getAttribute('link') + '\')">' + subNodes[j].getAttribute('name') + "</a></li>";
 					pages.push(subNodes[j].getAttribute('link'));
 				}
 			}
@@ -258,6 +276,11 @@ function frameLoaded(direction) {
 	}
 	
 	updateMenuItems();
+	if (pagesVisited.indexOf(currentPage) == -1) {
+		pagesVisited.push(currentPage);
+		localStorage.setItem("pages_visited", JSON.stringify(pagesVisited));
+		updateCourseMap();
+	}
 }
 
 function updateMenuItems() {
@@ -271,13 +294,18 @@ function updateMenuItems() {
 	
 	for (var i = 0; i < resources.length; i++) {
 		var resource = resources[i].split("|");
-		resourcesMarkup += '<a href="' + resource[1] + '">' + resource[0] + '</a>';
+		resourcesMarkup += '<a href="' + resource[1] + '" target="_blank">' + resource[0] + '</a>';
 	}
 	
 	$("#transcript_block").html(transcriptMarkup);
 	$("#resources_block").html(resourcesMarkup);
 	
-	$("#lesson_title").html(slides[currentPage].title);
+	var cropTitle = slides[currentPage].title;
+	if (cropTitle.length > 50) {
+		cropTitle = cropTitle.substring(0, 49);
+		cropTitle += "...";
+	}
+	$("#lesson_title").html(cropTitle);
 	
 	if (currentPage != 0) {
 		$("#slide_count").html((currentPage) + " of " + (slides.length - 1));
@@ -344,5 +372,16 @@ function returnPage(direction) {
 	} else {
 		$("#content_window").css("left", window.innerWidth);
 		$("#content_window").animate({left: 0}, 500, function() {});
+	}
+}
+
+function updateCourseMap() {
+	// TODO: Open coursemap to current node, reduce opacity slightly on visited nodes
+	var pagesRetriever = JSON.parse(localStorage.getItem("pages_visited"));
+	
+	for (var i = 0; i < pagesRetriever.length; i++) {
+		console.log(pagesRetriever[i]);
+		var id = "#" + pagesRetriever[i].toString();
+		$(id).addClass("page-visited");
 	}
 }

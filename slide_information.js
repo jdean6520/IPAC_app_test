@@ -17,7 +17,7 @@ var slides = [
 			resources: []
 		},
 		{
-			title: "2.6 Review and Print the PPC",
+			title: "2.7 Review and Print the PPC",
 			transcript: "Click the Print Preview icon on the IPAC Toolbar to review the PPC before printing.<br /><br />Click the Print icon on the Print Preview toolbar to print the completed PPC, and then close the Print Preview dialog.<br /><br />When you close the PPC application, a dialog displays asking if you want to save the file, which will have a .ipac extension. Saving the file as a .ipac file, saves all data entered in the current planning session. We won’t save the file at this time, so let’s click No to close the application.",
 			resources: []
 		},

@@ -193,7 +193,7 @@ body {
 	color: white;
 	top: 3.2em;
 	position: absolute;
-	overflow:hidde4n;
+	overflow:hidden;
 }
 
 #user_info_block {
@@ -256,6 +256,13 @@ body {
 
 /* Help page 1 */
 /* Swipe right */
+help_instruction0 {
+	position: absolute;
+	top: 5%;
+	left: 40%;
+	width: 20em;
+}
+
 #help_instruction1 {
 	position: absolute;
 	top: 10%;
