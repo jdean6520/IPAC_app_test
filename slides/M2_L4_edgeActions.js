@@ -46,12 +46,7 @@ var Composition = Edge.Composition, Symbol = Edge.Symbol; // aliases for commonl
                   checkAnswer();
          });
          
-         var hideKeyboard = function() {
-             document.activeElement.blur();
-             sym.$("answer").blur();
-         };
          
-         //This is code for hit area set up and initilizing
          
          
          

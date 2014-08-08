@@ -19,7 +19,7 @@ var symbols = {
     minimumCompatibleVersion: "4.0.0",
     build: "4.0.0.359",
     baseState: "Base State",
-    scaleToFit: "both",
+    scaleToFit: "none",
     centerStage: "both",
     initialState: "Base State",
     gpuAccelerate: false,
@@ -341,7 +341,7 @@ var symbols = {
         "Default Timeline": {
             fromState: "Base State",
             toState: "",
-            duration: 44769,
+            duration: 47388,
             autoPlay: false,
             timeline: [
                 { id: "eid52", tween: [ "style", "${__006_010c_tabDrag}", "display", 'block', { fromValue: 'none'}], position: 31642, duration: 0, easing: "easeOutQuad" },

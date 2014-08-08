@@ -353,7 +353,7 @@ function pageSwipe(direction) {
 				frameLoaded("left");
 			};});
 	}
-	if ((direction == "left") && (currentPage < pages.length)) {
+	if ((direction == "left") && (currentPage < pages.length - 1)) {
 		$("#content_window").animate({left: -window.innerWidth}, 500, function() {
 			currentPage++;
 			var contentFrame = document.getElementById("content_frame");

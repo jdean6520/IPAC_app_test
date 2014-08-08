@@ -4,7 +4,7 @@ var slides = [
 		{
 			title: "",
 			transcript: "",
-			resources: [ "Dynetics Website|http://www.Dynetics.com","Army Website|http://www.goarmy.com","Adobe Website|http://www.adobe.com"]
+			resources: [ "Dynetics Website|http://www.Dynetics.com","Army Website|http://www.goarmy.com","Adobe Website|http://www.adobe.com", "PDF File|pdfs/pdf.pdf"]
 		},
 		{
 			title: "2.4 Configuring the Basic Aircraft Items",
