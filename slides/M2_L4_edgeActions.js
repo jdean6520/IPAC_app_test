@@ -37,6 +37,7 @@ var Composition = Edge.Composition, Symbol = Edge.Symbol; // aliases for commonl
          if (rightAnswer == sym.getVariable("key"))
          {
          	sym.play();
+         
          console.log("correct");
          }
          }
@@ -44,6 +45,11 @@ var Composition = Edge.Composition, Symbol = Edge.Symbol; // aliases for commonl
          sym.$("answer").on('input', function(e){
                   checkAnswer();
          });
+         
+         var hideKeyboard = function() {
+             document.activeElement.blur();
+             sym.$("answer").blur();
+         };
          
          //This is code for hit area set up and initilizing
          
@@ -61,6 +67,7 @@ var Composition = Edge.Composition, Symbol = Edge.Symbol; // aliases for commonl
          //sym.setVariable("interaction_start", sym.$("audio")[0].currentTime);
          sym.stopAll();
          sym.$("audio")[0].pause();
+         inputAnswer.focus();
          
          
          sym.setVariable("key", ".95");
@@ -241,6 +248,7 @@ var Composition = Edge.Composition, Symbol = Edge.Symbol; // aliases for commonl
          sym.$("audio")[0].currentTime = 90.336;
          sym.$("audio")[0].play();
          
+         inputAnswer.blur();
          
          
          
