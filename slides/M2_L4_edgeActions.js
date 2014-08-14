@@ -18,15 +18,18 @@ var Composition = Edge.Composition, Symbol = Edge.Symbol; // aliases for commonl
          
          //This is code for itializing text input and checking
          
+         
+         var textWidth = null;
+         var textHeight = null;
+         
          var answer = sym.$("answer");
          answer.html("");
          inputAnswer = $('<input />').attr({'type':'text', 'value':'', 'id':'answer'});
          inputAnswer .css ('font-size', 12);
-         inputAnswer .css ('width', 48);
-         inputAnswer .css ('height', 15);
+         inputAnswer .css ('width', textWidth);
+         inputAnswer .css ('height', textHeight);
          inputAnswer .css ('background-color','#ffffff');
          inputAnswer .appendTo(answer);
-         sym.setVariable("key" , "");
          
          
          function checkAnswer(){
@@ -37,8 +40,15 @@ var Composition = Edge.Composition, Symbol = Edge.Symbol; // aliases for commonl
          if (rightAnswer == sym.getVariable("key"))
          {
          	sym.play();
+         	answer.html("");
+         	inputAnswer = $('<input />').attr({'type':'text', 'value':'', 'id':'answer'});
+         	inputAnswer .css ('width', sym.getVariable("textWidth"));
+         	inputAnswer .css ('height', sym.getVariable("textHeight"));
+         	inputAnswer .css ('background-color','#ffffff');
+         	inputAnswer .appendTo(answer);
+         	console.log("correct");
          
-         console.log("correct");
+         
          }
          }
          
@@ -62,11 +72,23 @@ var Composition = Edge.Composition, Symbol = Edge.Symbol; // aliases for commonl
          //sym.setVariable("interaction_start", sym.$("audio")[0].currentTime);
          sym.stopAll();
          sym.$("audio")[0].pause();
-         inputAnswer.focus();
          
+         //This captures size of textbox on stage and passes its Width and Height
+         textWidth = sym.$("answer").width();
+         textHeight = sym.$("answer").height();
          
+         //DO NOT DELETE THIS SECTION!
+         inputAnswer .css ('width', textWidth);
+         inputAnswer .css ('height', textHeight);
+         sym.setVariable("textWidth", sym.$("answer").width());
+         sym.setVariable("textHeight", sym.$("answer").height());
+         
+         //Enter the correct answer to be place in the textbox
          sym.setVariable("key", ".95");
+         
+         //interaction clip (in)
          sym.getSymbol("interaction_ETF").play("in");
+         
          
          
          
@@ -242,7 +264,6 @@ var Composition = Edge.Composition, Symbol = Edge.Symbol; // aliases for commonl
          //sym.$("audio")[0].currentTime = sym.getVariable("interaction_start");
          sym.$("audio")[0].currentTime = 90.336;
          sym.$("audio")[0].play();
-         
          inputAnswer.blur();
          
          
@@ -380,6 +401,21 @@ var Composition = Edge.Composition, Symbol = Edge.Symbol; // aliases for commonl
       });
       //Edge binding end
 
+      Symbol.bindTriggerAction(compId, symbolName, "Default Timeline", 2000, function(sym, e) {
+         // insert code here
+         sym.getSymbol("pauseIndicator").play(0);
+         
+
+      });
+      //Edge binding end
+
+      Symbol.bindTriggerAction(compId, symbolName, "Default Timeline", 500, function(sym, e) {
+         // insert code here
+         sym.getSymbol("pauseIndicator").stop(0);
+
+      });
+      //Edge binding end
+
    })("play_pause");
    //Edge symbol end:'play_pause'
 
@@ -434,5 +470,22 @@ var Composition = Edge.Composition, Symbol = Edge.Symbol; // aliases for commonl
    
    })("hitarea");
    //Edge symbol end:'hitarea'
+
+   //=========================================================
+   
+   //Edge symbol: 'pauseIndicator'
+   (function(symbolName) {   
+   
+      Symbol.bindTriggerAction(compId, symbolName, "Default Timeline", 2000, function(sym, e) {
+         
+         // Play the timeline at a label or specific time. For example:
+         // sym.play(500); or sym.play("myLabel");
+         sym.play(0);
+
+      });
+      //Edge binding end
+
+   })("pauseIndicator");
+   //Edge symbol end:'pauseIndicator'
 
 })(jQuery, AdobeEdge, "slide_container");

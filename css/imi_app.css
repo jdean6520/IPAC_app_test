@@ -172,6 +172,10 @@ body {
 	top: 3.2em;
 }
 
+#transcript_block p {
+	line-height: 130%;	
+}
+
 #resources_block {
 	background-color: rgba(0,0,0,.8);
 	border-bottom: solid 3px #f7931d;
@@ -187,13 +191,11 @@ body {
 #help_block {
 	width: 100%;
 	height: 100%;
-	/*background-image: url("../images/help_slide.png");*/
-	background-repeat: no-repeat;
-	background-size: 100%;
+	background-color: rgba(0,0,0,.7);	
 	color: white;
 	top: 3.2em;
 	position: absolute;
-	overflow:hidden;
+	z-index: 500;
 }
 
 #user_info_block {
@@ -219,134 +221,83 @@ body {
 
 /* ********************   HELP LESSON   ************** */
 
-#help_page1, #help_page2, #help_page3 {
+#help_page1, #help_page2{
 	width: 100%;
 	height: 100%;
-	font-size: 1.1em;
+	font-size: 1.2em;
 	position: absolute;
-	top: 3.2em;
 	text-align: center;
+	top:3em;
 }
 
+ #help_page3, #help_page4, #help_page5, #help_page6, #help_page7, #help_page8, #help_page9 {
+ 	width: 100%;
+	height: 100%;
+	font-size: 1.2em;
+	position: absolute;
+	text-align: center;
+ 	top:3em;
+ 	z-index:999;
+ }
+
 #help_block p {
-	margin-top: 1em;
+	
+	margin: 0 auto;
 }
 
 #help_page1 img {
-	width: 5em;
+	margin-bottom: 2em;
+
+}
+#help_page2 img {
+	margin-top:4em;
 }
 
-#help_page3 img {
-	transform:rotate(180deg);
-	-ms-transform:rotate(180deg);
-	-webkit-transform:rotate(180deg);
+#help_page3 ,#help_page4, #help_page5, #help_page6, #help_page7, #help_page8, #help_page9 img {
+	margin-top:-5.7em;
 }
-
+ 
 #help_page1 {
 	left: 0;
+	margin-top:6em;
 }
 
-#help_page2 {
+#help_page2, #help_page3, #help_page4, #help_page5, #help_page6, #help_page7, #help_page8, #help_page9{
 	left: 100%;
+	
 }
-
-#help_page3 {
-	left: 100%;
+.loaded{
 }
-
-/* Help page 1 */
-/* Swipe right */
-help_instruction0 {
+#sliderArea{
 	position: absolute;
-	top: 5%;
-	left: 40%;
-	width: 20em;
+	bottom:48px;
 }
 
-#help_instruction1 {
+#help_close_btn img{
+	width:2em;
 	position: absolute;
-	top: 10%;
-	left: 2em;
+	right: .5em;
+	bottom: 7em;
 }
 
-/* Swipe left */
-#help_instruction2 {
+#course_map_block img{
 	position: absolute;
-	top: 10%;
-	right: 2em;
+	right: .5em;
+	bottom: .5em;
+	width:2em;
 }
-
-/* Tap */
-#help_instruction3 {
+#transcript_block img{
 	position: absolute;
-	top: 40%;
-	left: 35%;
+	right: .5em;
+	bottom: .5em;
+	width:2em;
 }
-
-/* Help page 2 */
-/* Course Map */
-#help_instruction4 {
+#resources_block img{
 	position: absolute;
-	top: 0;
-	left: 0;
-	width: 20em;
+	right: .5em;
+	bottom: .5em;
+	width:2em;
 }
-
-/* Transcript */
-#help_instruction5 {
-	position: absolute;
-	top: 8%;
-	left: 20%;
-	width: 20em;
-}
-
-/* Resources */
-#help_instruction6 {
-	position: absolute;
-	top: 0;
-	left: 50%;
-	width: 20em;
-}
-
-/* User Info */
-#help_instruction7 {
-	position: absolute;
-	top: 20%;
-	left: 50%;
-	width: 20em;
-}
-
-/* Help */
-#help_instruction8 {
-	position: absolute;
-	top: 8%;
-	left: 70%;
-	width: 20em;
-}
-
-/* Help page 3 */
-/* Slide title */
-#help_instruction9 {
-	position: absolute;
-	bottom: 25%;
-	left: 2em;
-}
-
-/* Slider controls */
-#help_instruction10 {
-	position: absolute;
-	bottom: 20%;
-	left: 30%;
-	width: 20em;
-}
-
-/* Slide count */
-#help_instruction11 {
-	position: absolute;
-	bottom: 25%;
-	right: 2em;
-}
-
 /* ********************   CONTENT FRAME   ************** */
 
 #content_frame {
@@ -425,3 +376,9 @@ input[type='range']::-webkit-slider-thumb {
 	height: 2em;
 	width: 2em;
 }
+
+.restart_btn
+{
+	height: 2.1em;
+}
+

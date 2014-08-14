@@ -15,13 +15,13 @@ var Composition = Edge.Composition, Symbol = Edge.Symbol; // aliases for commonl
       
       
 
+      
+
       Symbol.bindElementAction(compId, symbolName, "${_play_pause}", "touchend", function(sym, e) {
          
          if (sym.isPlaying()) {
          	sym.stop()
-         	console.log("Movie is paused");
          	sym.$("audio")[0].pause();
-         	console.log("Audio is paused as well");
          
          
          sym.getSymbol("play_pause").play("pause");
@@ -35,9 +35,7 @@ var Composition = Edge.Composition, Symbol = Edge.Symbol; // aliases for commonl
          
          } else {
          	sym.play()
-         	console.log("Movie is playing");
          	sym.$("audio")[0].play();
-         	console.log("Audio is playing as well");
          
          	sym.getSymbol("play_pause").play("play");
          
@@ -46,6 +44,17 @@ var Composition = Edge.Composition, Symbol = Edge.Symbol; // aliases for commonl
          }
          
          
+         
+         
+
+      });
+      //Edge binding end
+
+      Symbol.bindTriggerAction(compId, symbolName, "Default Timeline", 47388, function(sym, e) {
+         // insert code here
+         sym.stopAll();
+         // Pause an audio track 
+         sym.$("audio")[0].pause();
          
 
       });
@@ -73,8 +82,31 @@ var Composition = Edge.Composition, Symbol = Edge.Symbol; // aliases for commonl
       });
       //Edge binding end
 
+      Symbol.bindTriggerAction(compId, symbolName, "Default Timeline", 2000, function(sym, e) {
+         // insert code here
+         sym.getSymbol("pauseIndicator").play(0);
+         
+
+      });
+      //Edge binding end
+
+      Symbol.bindTriggerAction(compId, symbolName, "Default Timeline", 500, function(sym, e) {
+         // insert code here
+         sym.getSymbol("pauseIndicator").stop(0);
+
+      });
+      //Edge binding end
+
    })("play_pause");
    //Edge symbol end:'play_pause'
+
+   //=========================================================
+   
+   //Edge symbol: 'play_icon'
+   (function(symbolName) {   
+   
+   })("play_icon");
+   //Edge symbol end:'play_icon'
 
    //=========================================================
    
@@ -86,10 +118,19 @@ var Composition = Edge.Composition, Symbol = Edge.Symbol; // aliases for commonl
 
    //=========================================================
    
-   //Edge symbol: 'play_icon'
+   //Edge symbol: 'pauseIndicator'
    (function(symbolName) {   
    
-   })("play_icon");
-   //Edge symbol end:'play_icon'
+      Symbol.bindTriggerAction(compId, symbolName, "Default Timeline", 2000, function(sym, e) {
+         
+         // Play the timeline at a label or specific time. For example:
+         // sym.play(500); or sym.play("myLabel");
+         sym.play(0);
+
+      });
+      //Edge binding end
+
+   })("pauseIndicator");
+   //Edge symbol end:'pauseIndicator'
 
 })(jQuery, AdobeEdge, "slide_container");

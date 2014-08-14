@@ -31,31 +31,69 @@
             <div id="transcript_block" class="foldout_menu">Transcript.</div>
             <div id="resources_block" class="foldout_menu">Resources.</div>
             <!-- <div id="user_info_block" class="foldout_menu">User Info</div> -->
-            <div id="help_block" class="foldout_menu">
-            	<div id="help_page1">
-                	<div id="help_instruction0"><p>Welcome to the IPAC OH-58 Training IMI. Here are a few tips to get you started.</p></div>
-                	<div id="help_instruction1"><img src="images/slide_left.png" /><p>Swipe right to go to the next instruction slide.</p></div>
-                	<div id="help_instruction2"><img src="images/slide_right.png" /><p>Swipe left to go to the previous instruction slide.</p></div>
-                    <div id="help_instruction3"><img src="images/tap.png" /><p>Tap anywhere on the slide to play and pause.</p></div>
+        </div>
+        <div id="help_block" class="foldout_menu">
+            		<div id="help_page1">
+	            		<div >
+	                		<img src="images/swipe.gif" /><p>Swipe left to go to the next slide.</p>
+	                		<hr style="border: 1px dotted #fff; width:40%;" />
+	                		<p>Swipe right to go to the previous slide.</p>
+	                	</div>
+                	</div>
+                	<div id="help_page2">
+	                	<div >
+	                		<img src="images/tapping.gif" /><p>Tap anywhere on the slide to play and pause.</p>
+	                	</div>
+	                </div>
+                	<div id="help_page3">
+                    	<div>
+                    		<img src="images/courseMap.png"/>                    		
+                    	</div>
+                    </div>
+                    <div id="help_page4">
+                    	<div>
+                    		<img src="images/transcript.png"/>                    		
+                    	</div>
+                    </div>
+                    <div id="help_page5">
+                    	<div>
+                    		<img src="images/resources.png"/>                    		
+                    	</div>
+                    </div>
+                    <div id="help_page6">
+                    	<div>                    		
+                    		<img src="images/lessonArea.png"/>                    		
+                    	</div>
+                    </div>
+                    <div id="help_page7">
+                        <div>                            
+                            <img src="images/slider.png"/>                          
+                        </div>
+                    </div>
+                    <div id="help_page8">
+                        <div>                            
+                            <img src="images/restart.png"/>                          
+                        </div>
+                    </div>
+                    <div id="help_page9">
+                        <div>                            
+                            <img src="images/total_slides.png"/>                          
+                        </div>
+                    </div>
+
+                    <div id="help_close_btn">
+                    <span class="close_button" onclick="toggleHelp()"><img src="images/close_button.png" class="close_button"></span>
                 </div>
-                <div id="help_page2">
-                	<div id="help_instruction4"><img src="images/arrow.png" /><p>The Course Map allows you to navigate to any slide.</p></div>
-                	<div id="help_instruction5"><img src="images/arrow.png" /><p>The Transcript is a text version of the current slide narration.</p></div>
-                    <div id="help_instruction6"><img src="images/arrow.png" /><p>Resources are links to more information about the subject.</p></div>
-                    <!--<div id="help_instruction7"><img src="images/arrow.png" /><p>User Info tracks your progress through the course.</p></div>-->
-                    <div id="help_instruction8"><img src="images/arrow.png" /><p>Help brings you back here.</p></div>
+                <div id="sliderArea">
+                    <img src="images/sliderArea.png" class="loaded"/> 
                 </div>
-                <div id="help_page3">
-                	<div id="help_instruction9"><p>The current slide title.</p></div>
-                	<div id="help_instruction10"><p>Use the slider to rewind and fast forward the current slide.</p><img src="images/arrow.png" /></div>
-                    <div id="help_instruction11"><p>The current slide number within the current lesson.</p></div>
-                </div>
-            </div>
+                    
         </div>
         <div id="controls_bar">
-        	<h3 id="lesson_title"></h3>
+            <h3 id="lesson_title"></h3>
             <div id="slider">
-            	<input type="range" id="sliderBar" min="0" max="100" step="1" value="0" />
+                <input type="range" id="sliderBar" min="0" max="100" step="1" value="0" />
+                <span id="restart_btn"><img src="images/replay_button.png" class="restart_btn" /></span>
             </div>
             <h3 id="slide_count"></h3>
         </div>
